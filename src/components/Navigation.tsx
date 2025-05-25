@@ -7,7 +7,7 @@ import {
   Search, 
   ShoppingBag, 
   Heart, 
-  User, 
+  LogIn, 
   Menu,
   X 
 } from "lucide-react";
@@ -18,6 +18,11 @@ interface NavigationProps {
 
 const Navigation = ({ onCartOpen }: NavigationProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const handleLoginClick = () => {
+    // Navigate to auth page or open login modal
+    console.log("Login clicked");
+  };
 
   return (
     <nav className="sticky top-0 z-50 bg-[#F6F2ED] border-b border-gray-200">
@@ -63,10 +68,10 @@ const Navigation = ({ onCartOpen }: NavigationProps) => {
             <Button variant="ghost" size="icon" className="hidden md:flex">
               <Heart className="h-5 w-5" />
             </Button>
-            <Button variant="ghost" size="icon" className="hidden md:flex">
-              <User className="h-5 w-5" />
+            <Button variant="ghost" size="icon" className="hidden md:flex" onClick={handleLoginClick}>
+              <LogIn className="h-5 w-5" />
             </Button>
-            <Button variant="ghost" size="icon" onClick={onCartOpen}>
+            <Button variant="ghost" size="icon" onClick={onCartOpen} className="relative">
               <ShoppingBag className="h-5 w-5" />
               <Badge className="absolute -top-2 -right-2 bg-[#C49B66] text-white text-xs">
                 2
@@ -111,9 +116,9 @@ const Navigation = ({ onCartOpen }: NavigationProps) => {
                   <Heart className="h-4 w-4 mr-2" />
                   Wishlist
                 </Button>
-                <Button variant="outline" size="sm">
-                  <User className="h-4 w-4 mr-2" />
-                  Account
+                <Button variant="outline" size="sm" onClick={handleLoginClick}>
+                  <LogIn className="h-4 w-4 mr-2" />
+                  Login
                 </Button>
               </div>
             </div>
